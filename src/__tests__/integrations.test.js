@@ -16,7 +16,7 @@ afterEach(() => {
   moxios.uninstall();
 });
 
-it('can fetch a list of comments and display them', () => {
+it('can fetch a list of comments and display them', (done) => {
   // attempt ot render the entire applyMiddleware
   const wrapped = mount(
     <Root>
@@ -26,5 +26,9 @@ it('can fetch a list of comments and display them', () => {
   // find the fetch comment button and click it
   wrapped.find('.fetch-comments').simulate('click');
   // expect to find a list of comments
-  expect(wrapped.find('li').length).toEqual(2);
+  setTimeout(() => {
+    wrapped.update()
+    expect(wrapped.find('li').length).toEqual(2);
+    done();
+  }, 100);
 });
