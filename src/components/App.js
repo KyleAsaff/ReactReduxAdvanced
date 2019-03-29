@@ -7,7 +7,6 @@ import * as actions from 'actions';
 
 class App extends Component {
   renderButton() {
-    console.log(this.props)
     if (this.props.auth) {
       return <button onClick={() => this.props.changeAuth(false)}>Sign Out</button>;
     } else {
